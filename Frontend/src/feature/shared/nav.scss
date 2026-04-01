@@ -1,0 +1,150 @@
+/* ── Navigation ── */
+
+.top-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--border-primary);
+
+  .left {
+    display: flex;
+    align-items: center;
+
+    .connect-hub,
+    #logo {
+      background: none;
+      padding: 0;
+
+      &:hover {
+        background: none;
+      }
+
+      h1 {
+        font-size: var(--font-xl);
+        font-weight: var(--weight-bold);
+        color: var(--text-primary);
+        letter-spacing: -0.5px;
+      }
+    }
+  }
+
+  .right {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+
+    .create-post {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      font-size: var(--font-base);
+      font-weight: var(--weight-semibold);
+      color: var(--text-primary);
+      background-color: var(--accent);
+      border-radius: var(--radius-md);
+      transition: background-color var(--transition-fast);
+
+      &:hover {
+        background-color: var(--accent-hover);
+      }
+
+      &:active {
+        transform: scale(0.97);
+      }
+    }
+
+    .logout {
+      display: inline-flex;
+      align-items: center;
+      padding: 0.5rem 1rem;
+      font-size: var(--font-base);
+      font-weight: var(--weight-semibold);
+      color: var(--danger);
+      background: transparent;
+      border: 1px solid var(--danger);
+      border-radius: var(--radius-md);
+      cursor: pointer;
+      transition: all var(--transition-fast);
+
+      &:hover {
+        background-color: rgba(237, 73, 86, 0.1);
+      }
+
+      &:active {
+        transform: scale(0.97);
+      }
+    }
+  }
+}
+
+/* ── Mobile Bottom Nav ── */
+.mobile-bottom-nav {
+  display: none;
+}
+
+/* ── Mobile Breakpoint ── */
+@media screen and (max-width: 899px) {
+  .create-post {
+    display: none !important;
+  }
+
+  .top-nav {
+    padding: 0.625rem 0;
+  }
+
+  .mobile-bottom-nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: var(--bg-card);
+    border-top: 1px solid var(--border-primary);
+    padding: 0.5rem 0;
+    z-index: 1000;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    a {
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 3rem;
+      height: 3rem;
+      border-radius: var(--radius-full);
+      transition: color var(--transition-fast);
+      position: relative;
+
+      svg {
+        width: 1.625rem;
+        height: 1.625rem;
+        fill: currentColor;
+      }
+
+      &.active {
+        color: var(--text-primary);
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -2px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 4px;
+          height: 4px;
+          border-radius: var(--radius-full);
+          background-color: var(--accent);
+        }
+      }
+    }
+  }
+
+  body {
+    padding-bottom: 4.5rem;
+  }
+}
